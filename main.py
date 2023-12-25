@@ -23,3 +23,6 @@ def path_param(gender:Gender):
         
     return {'message':gender}
 
+@app.get("/query")
+def query_param(limit:int):
+    return {'limit': limit}
