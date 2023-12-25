@@ -11,3 +11,7 @@
 - Konversi dan Validasi data by Type
 - Order Matter
 - Enum
+
+## Chapter 3 : Query Parameter
+- Intro Query parameter
+- Sifatnya mirip kayak path
