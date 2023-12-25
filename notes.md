@@ -5,3 +5,9 @@
 - Define requirements/lib/dependencies
 - Install dependencies
 - Make a simple API
+
+## Chapter 2 : Path Parameter
+- Intro Path parameter
+- Konversi dan Validasi data by Type
+- Order Matter
+- Enum
