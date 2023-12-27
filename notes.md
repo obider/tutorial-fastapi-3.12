@@ -14,4 +14,4 @@
 
 ## Chapter 3 : Query Parameter
 - Intro Query parameter
-- Sifatnya mirip kayak path
+- Default Value
