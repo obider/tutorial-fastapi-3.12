@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from enum import Enum
 
+from pydantic import BaseModel
+
 class Gender(str,Enum):
     LAKI_LAKI = "LAKI-LAKI"
     PEREMPUAN = "PEREMPUAN"
@@ -26,3 +28,16 @@ def path_param(gender:Gender):
 @app.get("/query")
 def query_param(umur: int | None = None):
     return {'umur':umur}
+
+
+class Belanjaan(BaseModel):
+    nama: str
+    harga: int = 1000
+    deskripsi: str | None = None
+    
+
+
+@app.post("/item")
+def create_item(item: Belanjaan):
+    return item
+

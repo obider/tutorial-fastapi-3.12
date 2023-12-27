@@ -15,3 +15,7 @@
 ## Chapter 3 : Query Parameter
 - Intro Query parameter
 - Default Value
+
+## Chapter 4 : Request Body
+- Send Data to API
+- Class BaseModel as Request Body JSON
