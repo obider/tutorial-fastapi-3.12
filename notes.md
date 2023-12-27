@@ -19,3 +19,7 @@
 ## Chapter 4 : Request Body
 - Send Data to API
 - Class BaseModel as Request Body JSON
+
+## Chapter 5 : Annotation
+- Anotasi
+- Extra Validation
