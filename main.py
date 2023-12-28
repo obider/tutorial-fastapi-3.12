@@ -36,9 +36,15 @@ class Belanjaan(BaseModel):
     harga: int = Field(gt=0, default=100)
     deskripsi: str | None = None
     
+class BelanjaanResponse(BaseModel):
+    nama: str
+    harga: int
 
 
-@app.post("/item")
+@app.post("/item", response_model=BelanjaanResponse)
 def create_item(item: Annotated[Belanjaan, Body()]):
-    return item
+    processed_item = {
+        "bebas": item
+    }
+    return processed_item
 

@@ -23,3 +23,6 @@
 ## Chapter 5 : Annotation
 - Anotasi
 - Extra Validation
+
+## Chapter 6 : Response Body
+- Response Body Class
