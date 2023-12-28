@@ -1,50 +1,40 @@
 from typing import Annotated
-from fastapi import Body, FastAPI, Path, Query
-from enum import Enum
-
-from pydantic import BaseModel, Field
-
-class Gender(str,Enum):
-    LAKI_LAKI = "LAKI-LAKI"
-    PEREMPUAN = "PEREMPUAN"
-
+from fastapi import FastAPI, Path
+from pydantic import BaseModel
 
 app = FastAPI()
 
-@app.get("/simple_api")
-def simple_get():
-    return {'message':"simple bgt woi"}
-
-@app.get("/path/gue")
-def path_param():
-    return {'message':"gue"}
-
-@app.get("/path/{gender}")
-def path_param(gender: Annotated[Gender, Path(description="gender pengguna")] ):
-    if gender is Gender.LAKI_LAKI:
-        print("Laki nih")
-        
-    return {'message':gender}
-
-@app.get("/query")
-def query_param(umur: Annotated[int | None, Query(description="Ini input umur legal", gt=17)] = None):
-    return {'umur':umur}
-
-
 class Belanjaan(BaseModel):
     nama: str
-    harga: int = Field(gt=0, default=100)
-    deskripsi: str | None = None
-    
-class BelanjaanResponse(BaseModel):
-    nama: str
     harga: int
+    jumlah: int
+
+list_belajaan : list[Belanjaan] = []
+
+#API create belanjaan
+@app.post("/belanjaan/create", response_model=Belanjaan)
+def create_belanjaan(item : Belanjaan):
+    list_belajaan.append(item)
+    return item
+
+#API Nampilin data belanjaan
+@app.get("/belanjaan/list", response_model=list[Belanjaan])
+def get_list_belanja(nama : None | str = None):
+    if nama is not None:
+        result = [item for item in list_belajaan if item.nama == nama]
+
+    else:
+        result = list_belajaan
 
 
-@app.post("/item", response_model=BelanjaanResponse)
-def create_item(item: Annotated[Belanjaan, Body()]):
-    processed_item = {
-        "bebas": item
-    }
-    return processed_item
+    return result
+
+
+#API nampilin belanjaan by index
+@app.get('/belanjaan/{index}', response_model=Belanjaan)
+def get_belanjaan_by_idx(index:Annotated[int, Path(ge=0)]):
+    if index > len(list_belajaan)-1:
+        index = len(list_belajaan)-1
+    return list_belajaan[index]
+
 

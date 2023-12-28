@@ -26,3 +26,8 @@
 
 ## Chapter 6 : Response Body
 - Response Body Class
+
+## Chapter 7 : Simple Review
+- Bikin 1 API untuk create data belanjaan (nama, harga, jumlah) yang disimpen ke suatu list global
+- Bikin 1 API untuk nampilin semua data belanjaan, tambahin filter by nama
+- Bikin 1 API untuk nampilin 1 data belanjaan by index
